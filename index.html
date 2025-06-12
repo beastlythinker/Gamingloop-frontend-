@@ -1,1 +1,51 @@
-<html><head><title>GamingLoop</title></head><body><h1>Welcome to GamingLoop</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamingLoop - Full</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎮 GamingLoop</h1>
+    <nav>
+      <button onclick="showSection('upload')">Upload Game</button>
+      <button onclick="showSection('games')">Games</button>
+      <button onclick="showSection('dashboard')">Dashboard</button>
+      <button onclick="showSection('leaderboard')">Leaderboard</button>
+    </nav>
+  </header>
+  <main>
+    <section id="login">
+      <h2>Login / Register</h2>
+      <input type="text" placeholder="Username" id="username" />
+      <input type="password" placeholder="Password" id="password" />
+      <button onclick="login()">Login</button>
+    </section>
+    <section id="upload" style="display:none;">
+      <h2>Upload Game (ZIP)</h2>
+      <input type="text" id="gameTitle" placeholder="Game Title" />
+      <input type="file" id="gameFile" />
+      <button onclick="uploadGame()">Upload</button>
+    </section>
+    <section id="games" style="display:none;">
+      <h2>Game List</h2>
+      <input type="text" placeholder="Search..." oninput="searchGames(this.value)" />
+      <div id="gameList"></div>
+    </section>
+    <section id="dashboard" style="display:none;">
+      <h2>Dashboard</h2>
+      <div id="userGames">No uploaded games yet.</div>
+    </section>
+    <section id="leaderboard" style="display:none;">
+      <h2>Top Players</h2>
+      <ul id="scoreList"><li>Loading...</li></ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 GamingLoop. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

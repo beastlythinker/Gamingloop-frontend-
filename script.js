@@ -1,52 +1,21 @@
-const API_URL = 'https://your-backend-url.onrender.com';
 
-function register() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  fetch(`${API_URL}/auth/register`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password })
-  }).then(res => res.json()).then(alert);
+function showSection(id) {
+  ['upload', 'games', 'dashboard', 'leaderboard'].forEach(section => {
+    document.getElementById(section).style.display = 'none';
+  });
+  document.getElementById(id).style.display = 'block';
 }
 
 function login() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  fetch(`${API_URL}/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password })
-  }).then(res => res.json())
-    .then(data => {
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        document.getElementById("auth").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-        document.getElementById("user-name").innerText = username;
-        loadGames();
-      } else {
-        alert("Login failed");
-      }
-    });
+  alert("Login system is mocked. Backend required.");
 }
 
 function uploadGame() {
-  const file = document.getElementById("gameZip").files[0];
-  const formData = new FormData();
-  formData.append("file", file);
-  fetch(`${API_URL}/games/upload`, {
-    method: "POST",
-    headers: { "Authorization": localStorage.getItem("token") },
-    body: formData
-  }).then(res => res.json()).then(alert);
+  const title = document.getElementById('gameTitle').value;
+  const file = document.getElementById('gameFile').files[0];
+  alert('Game "' + title + '" uploaded (mock). Backend will handle real upload.');
 }
 
-function loadGames() {
-  fetch(`${API_URL}/games`)
-    .then(res => res.json())
-    .then(games => {
-      const list = games.map(g => `<p>${g.name}</p>`).join("");
-      document.getElementById("games").innerHTML = list;
-    });
+function searchGames(query) {
+  document.getElementById('gameList').innerHTML = "<p>Searching for: " + query + " (mock)</p>";
 }
