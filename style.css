@@ -1,0 +1,14 @@
+body {
+  font-family: sans-serif;
+  background: linear-gradient(to bottom right, #0f0c29, #302b63, #24243e);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+input, button {
+  margin: 8px;
+  padding: 10px;
+}
+#games {
+  margin-top: 20px;
+}
